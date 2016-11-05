@@ -50,7 +50,7 @@ local function pre_process(msg)
 	-- If sender is moderator then re-enable the channel
 	--if is_sudo(msg) then
 	if is_momod(msg) then
-	  if msg.text == "تشغيل البوت" then
+	  if msg.text == "" then
 	    enable_channel(receiver)
 	  end
 	end
@@ -65,11 +65,11 @@ end
 local function run(msg, matches)
 	local receiver = get_receiver(msg)
 	-- Enable a channel
-	if matches[1] == 'تشغيل البوت'  or matches[1] == 'bot on' then
+	if matches[1] == 'bot on' then
 		return enable_channel(receiver)
 	end
 	-- Disable a channel
-	if matches[1] == 'اطفاء البوت'  or matches[1] == 'bot off' then
+	if matches[1] == 'bot off' then
 		return disable_channel(receiver)
 	end
 end
@@ -80,10 +80,6 @@ return {
 		"Bot on: enable BOT In a Group",
 		"Bot off: disable Bot In a Group" },
 	patterns = {
-		"^(تشغيل البوت)",
-		"^(اطفاء البوت)", 
-		"^[#!/](تشغيل البوت)",
-		"^[#!/](اطفاء البوت)",
 		"^(bot on)",
 		"^(bot off)", 
 		"^[#!/](bot on)",
