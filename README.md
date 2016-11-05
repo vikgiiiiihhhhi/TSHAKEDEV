@@ -1,5 +1,5 @@
 #DEVTSHAKE_cli
-* 🔱- طريقه تنصيب سورس DEVTSHAKE -🔱
+* 🔱- طريقه تنصيب سورس TSHAKEDEV الانكليزي -🔱
 
 * 🔺- افتح ترمنال جديد وخلي🔧👇
 
@@ -11,11 +11,11 @@
 
 * 🔺- وراهه 👇
 
-* git clone https://github.com/moodlIMyIl/DEVTSHAKE.git
+* git clone https://github.com/moodlIMyIl/TSHAKEDEV.git
 
 * 🔺- وراهه👇
 
-* cd DEVTSHAKE
+* cd TSHAKEDEV
 
 * 🔺- وراهه👇
 
@@ -41,11 +41,11 @@
 
 * 🔺- تفتح ترمنال جديد وتكتب 
 
-* cd DEVTSHAKE
+* cd TSHAKEDEV
 
 * 🔺- انتر وبعدها هل امر 
 
-* bash DEVTSHAKE.sh -t
+* bash TSHAKEDEV.sh -t
 
 * 🔺- انتظر 5 ثواني يشتغل بوت 
 
