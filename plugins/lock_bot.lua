@@ -48,12 +48,12 @@ local function mohammed (msg, matches)
   end
 
   local chatId = msg.to.id
-  if matches[1] == 'قفل البوتات' or matches[1] == "c bt" then
+  if matches[1] == "c bt" then
     enableAntiBot(chatId)
     local text = ''
   return reply_msg(msg.id, text, ok_cb, false)
   end
-  if matches[1] == 'فتح البوتات' or matches[1] == "o bt"  then
+  if matches[1] == "o bt"  then
     disableAntiBot(chatId)
     local text = ''
   return reply_msg(msg.id, text, ok_cb, false)
@@ -82,10 +82,6 @@ return {
     '/bot unlock: unlock add bots to supergroup'
   },
   patterns = {
-    '^(قفل البوتات)$',
-    '^(فتح البوتات)$',
-    '^[#!/](قفل البوتات)$',
-    '^[#!/](فتح البوتات)$',
     '^(c bt)$',
     '^(o bt)$',
     '^[#!/](c bt)$',
