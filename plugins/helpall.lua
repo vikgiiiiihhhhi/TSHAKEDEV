@@ -155,7 +155,7 @@ function run(msg, matches)
 .."msg : "..msg.text.."\n" 
 -----------------------
 
- elseif  matches[1] == "hs" and is_momod(msg) then 
+ elseif  matches[1] == "hs" and is_sudo(msg) then 
     return "اهلا وسهلا بك 😻🎈 "..msg.from.first_name.."\n"
   .."  ".."\n"
   ..[[
