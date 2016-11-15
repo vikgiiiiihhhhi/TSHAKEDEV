@@ -2506,7 +2506,7 @@ local function DevPointTeam(msg, matches)
 			end
 		end
 
-		if matches[1] == 'c' and is_owner(msg) then
+		if matches[1] == 'c' and is_momod(msg) then
 			local chat_id = msg.to.id
 			if matches[2] == 'au' then
 			local msg_type = 'Audio'
