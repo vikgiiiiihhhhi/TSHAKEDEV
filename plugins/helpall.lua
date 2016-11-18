@@ -28,7 +28,6 @@ function run(msg, matches)
 ]].."\n"
 .."🔸--------------------------🔹".."\n"
 ..'🔺- CH - @lTSHAKEl_CH'..'\n'
-.."msg : "..msg.text.."\n" 
 ------------------
 
   elseif matches[1] == "ha" and is_momod(msg) then
@@ -61,7 +60,6 @@ function run(msg, matches)
 ]].."\n"
 .."🔸--------------------------🔹".."\n"
 ..'🔺- CH - @lTSHAKEl_CH'..'\n'
-.."msg : "..msg.text.."\n" 
 ------------------
 
 
@@ -84,7 +82,6 @@ function run(msg, matches)
 ]].."\n"
 .."🔸--------------------------🔹".."\n"
 ..'🔺- CH - @lTSHAKEl_CH'..'\n'
-.."msg : "..msg.text.."\n" 
 ------------------
 
   elseif  matches[1] == "hc" and is_momod(msg) then 
@@ -118,7 +115,6 @@ function run(msg, matches)
   ]].."\n"
 .."🔸--------------------------🔹".."\n"
 ..'🔺- CH - @lTSHAKEl_CH'..'\n'
-.."msg : "..msg.text.."\n" 
 ------------------
 
 
@@ -152,7 +148,6 @@ function run(msg, matches)
 🔺- us :- المعرف]].."\n"
 .."🔸--------------------------🔹".."\n"
 ..'🔺- CH - @lTSHAKEl_CH'..'\n'
-.."msg : "..msg.text.."\n" 
 -----------------------
 
  elseif  matches[1] == "hs" and is_sudo(msg) then 
@@ -178,7 +173,6 @@ function run(msg, matches)
 🕋- /p a :- الملفات المثبته]].."\n"
 .."🔸--------------------------🔹".."\n"
 ..'🔺- CH - @lTSHAKEl_CH'..'\n'
-.."msg : "..msg.text.."\n" 
 ------------------
   end
 end
