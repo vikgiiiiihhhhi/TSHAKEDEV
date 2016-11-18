@@ -24,24 +24,24 @@ local function enable_channel(receiver)
 	end
 
 	if _config.disabled_channels[receiver] == nil then
-	return 'البوت بالتاكيد تم ☑️ تشغيله في المجموعه 🎈'
-	end
-	
-	_config.disabled_channels[receiver] = false
+return 'الـبـوت بـالـتـاكـيـد تـم ✅ تـشـغـيـله فـي الـمـجـمـوعـه 👥'
+  end
+  
+  _config.disabled_channels[receiver] = false
 
-	save_config()
-	return "تم ☑️ تشغيل البوت في المجموعه 🎈"
+  save_config()
+  return "تــم ✅ تـشـغـيـل الـبـوت فــي الـمـجـمـوعـه 👥"
 end
 
 local function disable_channel( receiver )
-	if not _config.disabled_channels then
+  if not _config.disabled_channels then
        _config.disabled_channels = {}
-	end
-	
-	_config.disabled_channels[receiver] = true
+  end
+  
+  _config.disabled_channels[receiver] = true
 
-	save_config()
-	return "تم ☑️ اطفاء البوت في المجموعه 🎈 "
+  save_config()
+  return "تــم ✅ اطـفـاء الـبـوت فـي الـمــجـمـوعـه 👥 "
 end
 
 local function pre_process(msg)
