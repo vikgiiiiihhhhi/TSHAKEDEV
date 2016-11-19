@@ -9,12 +9,13 @@
 do
 
 local function pre_process(msg)
-    
-    local hash = 'mate:'..msg.to.id
-    if redis:get(hash) and msg.fwd_from and not is_sudo(msg) and not is_owner(msg) and not is_momod(msg)  then
+
+    local fwd = 'mate:'..msg.to.id
+    if redis:get(fwd) and not is_momod(msg) and msg.fwd_from then
             delete_msg(msg.id, ok_cb, true)
-            return "done"
-        end
+             send_large_msg(get_receiver(msg), '#تـنـبـيـه ⚠️\nمـمـنـوع عــمــل الـتـوجـيـه 🔕 داخـــل الــمــجــمــوعــة 👥✔️\n#المعرف @'..msg.from.username)
+            return "ok"
+end
         return msg
     end
 
@@ -24,13 +25,13 @@ local function pre_process(msg)
 local function moody(msg, matches)
     chat_id =  msg.to.id
     
-    if is_momod(msg) and matches[1] == "c fd"  then
+    if is_momod(msg) and matches[1] == 'قفل اعاده توجيه'  then
       
             
                     local hash = 'mate:'..msg.to.id
                     redis:set(hash, true)
                     return ""
-  elseif is_momod(msg) and matches[1] == "o fd"  then
+  elseif is_momod(msg) and matches[1] == 'فتح اعاده توجيه' then
       local hash = 'mate:'..msg.to.id
       redis:del(hash)
       return ""
@@ -40,10 +41,10 @@ end
 
 return {
     patterns = {
-        '^(c fd)$', 
-        '^(o fd)$',
-        '^[/!#](c fd)$', 
-        '^[/!#](o fd)$'
+        '^(قفل اعاده توجيه)$', 
+        '^(فتح اعاده توجيه)$',
+        '^[/!#](قفل اعاده توجيه)$', 
+        '^[/!#](فتح اعاده توجيه)$'
     },
 run = moody,
 pre_process = pre_process 
