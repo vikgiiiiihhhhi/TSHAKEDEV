@@ -45,7 +45,7 @@ local function check_member_super(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-   local text = 'تــم ✔️ تفعيــل هــذه المجمــوعــه 👥\n'..msg.to.title
+   local text = 'تــم ✔️ تفعيــل هــذه الــمــجــمــوعــة 👥\n'..msg.to.title
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -69,7 +69,7 @@ local function check_member_superrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-      local text = 'تــم ❌ تعطيــل هــذه المجمــوعــه 👥\n'..msg.to.title
+      local text = 'تــم ❌ تعطيــل هــذه الــمــجــمــوعــة 👥\n'..msg.to.title
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -110,13 +110,13 @@ end
 
 --Get and output info about supergroup
 local function callback_info(cb_extra, success, result)
-local title ="معلومات عن المــجمروعــهـ👥 :\n"..result.title.."\n\n"
+local title ="معلومات عن الــمــجــمــوعــة👥 :\n"..result.title.."\n\n"
 local admin_num = "عــدد الادمــنيــهـ👥 :\n"..result.admins_count.."\n"
 local user_num = "عــدد الاعــضــاء👥 :\n"..result.participants_count.."\n"
 local kicked_num = "الاعــضــاء الاكــثــر تــفــاعــلا👥 :\n"..result.kicked_count.."\n"
-local channel_id = "ايــديـ🆔 المــجــموعــهـ👥 :\n"..result.peer_id.."\n"
+local channel_id = "ايــديـ🆔 الــمــجــمــوعــة👥 :\n"..result.peer_id.."\n"
 if result.username then
-	channel_username = "مــعــرف المــجمــوعــهـ👥 :\n@"..result.username
+	channel_username = "مــعــرف الــمــجــمــوعــة👥 :\n@"..result.username
 else
 	channel_username = ""
 end
@@ -126,7 +126,7 @@ end
 
 --Get and output members of supergroup
 local function callback_who(cb_extra, success, result)
-local text = "اعــضــاء🗣 المــجمروعــهـ👥\n"..cb_extra.receiver
+local text = "اعــضــاء🗣 الــمــجــمــوعــة👥\n"..cb_extra.receiver
 local i = 1
 for k,v in pairsByKeys(result) do
 if not v.print_name then
@@ -934,14 +934,14 @@ local function set_rulesmod(msg, data, target)
   local data_cat = 'rules'
   data[tostring(target)][data_cat] = rules
   save_data(_config.moderation.data, data)
-  return 'تـــمـ☑️ وضـــع الـقـوانــ📝ــيـن للـمـمـجـموعـــه 👥'
+  return 'تـــمـ☑️ وضـــع الـقـوانــ📝ــيـن للــمــجــمــوعــة 👥'
 end
 
 --'Get supergroup rules' function
 local function get_rules(msg, data)
   local data_cat = 'rules'
   if not data[tostring(msg.to.id)][data_cat] then
-    return 'لـ⚠️ـمـ يــتـمـ وضــع الـقـوانــ📝ــيـن للـمـمـجـموعـــه 👥'
+    return 'لـ⚠️ـمـ يــتـمـ وضــع الـقـوانــ📝ــيـن للــمــجــمــوعــة 👥'
   end
   local rules = data[tostring(msg.to.id)][data_cat]
   local group_name = data[tostring(msg.to.id)]['settings']['set_name']
@@ -1131,7 +1131,7 @@ local function promote2(receiver, member_username, user_id)
   local group = string.gsub(receiver, 'channel#id', '')
   local member_tag_username = string.gsub(member_username, '@', '(at)')
   if not data[group] then
-    return send_large_msg(receiver, 'الـــمـــجموعـــه👥لـــيـــســـتــ⚠️فـــعـــالـــه🚶')
+    return send_large_msg(receiver, 'الــمــجــمــوعــة👥لـــيـــســـتــ⚠️فـــعـــالـــه🚶')
   end
   if data[group]['moderators'][tostring(user_id)] then
 return send_large_msg(receiver, member_username..' — الــعــضـــو\nبـالـتـاكـيـد تـمـ☑️رفـعـه ادمـن👥' ) 
@@ -1145,7 +1145,7 @@ local function demote2(receiver, member_username, user_id)
   local data = load_data(_config.moderation.data)
   local group = string.gsub(receiver, 'channel#id', '')
   if not data[group] then
-    return send_large_msg(receiver, 'الـــمـــجموعـــه👥لـــيـــســـتــ⚠️فـــعـــالـــه🚶')
+    return send_large_msg(receiver, 'الــمــجــمــوعــة👥لـــيـــســـتــ⚠️فـــعـــالـــه🚶')
   end
   if not data[group]['moderators'][tostring(user_id)] then
 return send_large_msg(receiver, member_username..' -- الــعــضـــو \nبالتــاكيــد تــمــ⚠️ـتنــزيــله من الادمـنـيـه👥' )
@@ -1159,7 +1159,7 @@ local function modlist(msg)
   local data = load_data(_config.moderation.data)
   local groups = "groups"
   if not data[tostring(groups)][tostring(msg.to.id)] then
-    return 'الـــمـــجموعـــه👥لـــيـــســـتــ⚠️فـــعـــالـــه🚶'
+    return 'الــمــجــمــوعــة👥لـــيـــســـتــ⚠️فـــعـــالـــه🚶'
   end
   -- determine if table is empty
   if next(data[tostring(msg.to.id)]['moderators']) == nil then
@@ -1208,10 +1208,10 @@ function get_message_callback(extra, success, result)
       return send_large_msg("channel#id"..channel_id, "Leave using kickme command")
     end
     if is_momod2(member_id, channel_id) and not is_admin2(msg.from.id) then
-               return send_large_msg("channel#id"..channel_id, " لــ⚠️ــا تـسـتـطـيـعــ🔕ــطــــرد الادمـــنـ👥")
+               return send_large_msg("channel#id"..channel_id, " لــ⚠️ــا تـسـتـطـيـعــ🔕ــطــــرد الادمـــن👥")
     end
     if is_admin2(member_id) then
-         return send_large_msg("channel#id"..channel_id, " لــ⚠️ــا تـسـتـطـيـعــ🔕ــطــــرد الاداريـ👥")
+         return send_large_msg("channel#id"..channel_id, " لــ⚠️ــا تـسـتـطـيـعــ🔕ــطــــرد الاداري👥")
     end
 		--savelog(msg.to.id, name_log.." ["..msg.from.id.."] kicked: ["..user_id.."] by reply")
 		kick_user(member_id, channel_id)
@@ -1222,10 +1222,10 @@ function get_message_callback(extra, success, result)
       return send_large_msg("channel#id"..channel_id, "Leave using kickme command")
     end
     if is_momod2(member_id, channel_id) and not is_admin2(msg.from.id) then
-               return send_large_msg("channel#id"..channel_id, " لــ⚠️ــا تـسـتـطـيـعــ🔕ــطــــرد الادمـــنـ👥")
+               return send_large_msg("channel#id"..channel_id, " لــ⚠️ــا تـسـتـطـيـعــ🔕ــطــــرد الادمـــن👥")
     end
     if is_admin2(member_id) then
-         return send_large_msg("channel#id"..channel_id, " لــ⚠️ــا تـسـتـطـيـعــ🔕ــطــــرد الاداريـ👥")
+         return send_large_msg("channel#id"..channel_id, " لــ⚠️ــا تـسـتـطـيـعــ🔕ــطــــرد الاداري👥")
     end
 		savelog(msg.to.id, name_log.." ["..msg.from.id.."] kicked: ["..user_id.."] by reply to sev. msg.")
 		kick_user(user_id, channel_id)
@@ -1271,9 +1271,9 @@ function get_message_callback(extra, success, result)
 			save_data(_config.moderation.data, data)
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] set: ["..result.from.peer_id.."] as owner by reply")
 			if result.from.username then
-				text = "@"..result.from.username.." [ "..result.from.peer_id.." ] \nتـمـ☑️ رفـعـك مــد😸يــر للــمجــموعه👥"
+				text = "@"..result.from.username.." [ "..result.from.peer_id.." ] \nتـمـ☑️ رفـعـك مــد😸يــر للــمــجــمــوعــة👥"
 			else
-				text = "[ "..result.from.peer_id.." ] \nتـمـ☑️ رفـعـك مــد😸يــر للــمجــموعه👥"
+				text = "[ "..result.from.peer_id.." ] \nتـمـ☑️ رفـعـك مــد😸يــر للــمــجــمــوعــة👥"
 			end
 			send_large_msg(channel_id, text)
 		end
@@ -1325,10 +1325,10 @@ function get_message_callback(extra, success, result)
 		print(chat_id)
 		if is_muted_user(chat_id, user_id) then
 			unmute_user(chat_id, user_id)
-send_large_msg(receiver, " ["..user_id.."] \nتـمـ⚠️ـالـغـاء كـتـمـكـ🔕ـفـي الـمـجـمـوعـه👥 ")
+send_large_msg(receiver, " ["..user_id.."] \nتـمـ⚠️ـالـغـاء كـتـمـكـ🔕ـفـي الــمــجــمــوعــة👥 ")
         elseif is_momod(msg) then
             mute_user(chat_id, user_id)
-            send_large_msg(receiver, " ["..user_id.."] \nتـمـ☑️ـكـتـمـكـ🔕ـفـي الـمـجـمـوعـه👥")
+            send_large_msg(receiver, " ["..user_id.."] \nتـمـ☑️ـكـتـمـكـ🔕ـفـي الــمــجــمــوعــة👥")
         end
 	end
 end
@@ -1481,10 +1481,10 @@ local function callbackres(extra, success, result)
 		local chat_id = string.gsub(receiver, 'channel#id', '')
 		if is_muted_user(chat_id, user_id) then
 			unmute_user(chat_id, user_id)
-            send_large_msg(receiver, " ["..user_id.."] \nتـمـ⚠️ـالـغـاء كـتـمـكـ🔕ـفـي الـمـجـمـوعـه👥")
+            send_large_msg(receiver, " ["..user_id.."] \nتـمـ⚠️ـالـغـاء كـتـمـكـ🔕ـفـي الــمــجــمــوعــة👥")
         elseif is_momod(extra.msg) then
             mute_user(chat_id, user_id)
-            send_large_msg(receiver, " ["..user_id.."] \nتـمـ☑️ـكـتـمـكـ🔕ـفـي الـمـجـمـوعـه👥")
+            send_large_msg(receiver, " ["..user_id.."] \nتـمـ☑️ـكـتـمـكـ🔕ـفـي الــمــجــمــوعــة👥")
         end
 	end
 end
@@ -1580,9 +1580,9 @@ elseif get_cmd == "add admin" then
 					save_data(_config.moderation.data, data)
 					savelog(channel, name_log.."["..from_id.."] set ["..v.peer_id.."] as owner by username")
 				if result.username then
-      	text = member_username.." ["..v.peer_id.."] \nتـمـ☑️ رفـعـك مــد😸يــر للــمجــموعه👥"
+      	text = member_username.." ["..v.peer_id.."] \nتـمـ☑️ رفـعـك مــد😸يــر للــمــجــمــوعــة👥"
 				else
-					text =" ["..v.peer_id.."] \nتـمـ☑️ رفـعـك مــد😸يــر للــمجــموعه👥"
+					text =" ["..v.peer_id.."] \nتـمـ☑️ رفـعـك مــد😸يــر للــمــجــمــوعــة👥"
 				end
 			end
 		elseif memberid and vusername ~= member and vpeer_id ~= memberid then
@@ -1597,7 +1597,7 @@ elseif get_cmd == "add admin" then
 				data[tostring(channel)]['set_owner'] = tostring(memberid)
 				save_data(_config.moderation.data, data)
 				savelog(channel, name_log.."["..from_id.."] set ["..memberid.."] as owner by username")
-				text = "["..memberid.."] \nتـمـ☑️ رفـعـك مــد😸يــر للــمجــموعه👥"
+				text = "["..memberid.."] \nتـمـ☑️ رفـعـك مــد😸يــر للــمــجــمــوعــة👥"
 			end
 		end
 	end
@@ -1621,7 +1621,7 @@ local function set_supergroup_photo(msg, success, result)
     channel_set_photo(receiver, file, ok_cb, false)
     data[tostring(msg.to.id)]['settings']['set_photo'] = file
     save_data(_config.moderation.data, data)
-    send_large_msg(receiver, 'تـمـ☑️ حـفـظـ الـصـ📷ـورهـ الـمـجـمـوعـه👥', ok_cb, false)
+    send_large_msg(receiver, 'تـمـ☑️ حـفـظـ الـصـ📷ـورهـ الــمــجــمــوعــة👥', ok_cb, false)
   else
     print('Error downloading: '..msg.id)
     send_large_msg(receiver, 'Failed, please try again!', ok_cb, false)
@@ -1643,7 +1643,7 @@ local function DevPointTeam(msg, matches)
 			if not is_admin1(msg) then
 				return
 			end
-            return "الـمـجـمـوعــه👥 خـارقـهـ🚀 بـالـفعـل😸"
+            return "الــمــجــمــوعــة👥 خـارقـهـ🚀 بـالـفعـل😸"
 		end
 	end
 	if msg.to.type == 'channel' then
@@ -1657,7 +1657,7 @@ local function DevPointTeam(msg, matches)
 				return
 			end
 			if is_super_group(msg) then
-		  local iDev1 = "الـمـجـمـوعـهـ👥 بـالـفعـلـ😸 تـمـ☑️ تـفـعـيـلـهـا❗️"
+		  local iDev1 = "الــمــجــمــوعــة👥 بـالـفعـلـ😸 تـمـ☑️ تـفـعـيـلـهـا❗️"
 		   return send_large_msg(receiver, iDev1)
 			end
 			print("SuperGroup "..msg.to.print_name.."("..msg.to.id..") added")
@@ -1668,7 +1668,7 @@ local function DevPointTeam(msg, matches)
 		end
 		if matches[1] == 'rem' and is_admin1(msg) and not matches[2] then
 			if not is_super_group(msg) then
-				return reply_msg(msg.id, 'الـمـجـمـوعـهـ👥 بـالـفعـلـ😸 تـمـ☑️ تـعـطـيـلـهـا❗️', ok_cb, false)
+				return reply_msg(msg.id, 'الــمــجــمــوعــة👥 بـالـفعـلـ😸 تـمـ☑️ تـعـطـيـلـهـا❗️', ok_cb, false)
 			end
 			print("SuperGroup "..msg.to.print_name.."("..msg.to.id..") removed")
 			superrem(msg)
@@ -1698,10 +1698,10 @@ local function DevPointTeam(msg, matches)
 		if matches[1] == "owner" then
 			local group_owner = data[tostring(msg.to.id)]['set_owner']
 			if not group_owner then
-                return "لـ⚠️ـا يـوجـد مــد😸يــر للمجمــوعــه 👥"
+                return "لـ⚠️ـا يـوجـد مــد😸يــر للــمــجــمــوعــة 👥"
 			end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] used /owner")
-            return "مــد😸يــر المجمــوعــه 👥\n["..group_owner..']'
+            return "مــد😸يــر الــمــجــمــوعــة 👥\n["..group_owner..']'
 		end
 
 		if matches[1] == "mods" then
@@ -1711,7 +1711,7 @@ local function DevPointTeam(msg, matches)
 		end
 
 		if matches[1] == "bots" and is_momod(msg) then
-            member_type = 'تـمـ☑️ الـكـشـفـ عــن الـبوتـاتـ ‼️ فــي الـمـجـمـوعـه👥'
+            member_type = 'تـمـ☑️ الـكـشـفـ عــن الـبوتـاتـ ‼️ فــي الــمــجــمــوعــة👥'
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup bots list")
 			channel_get_bots(receiver, callback, {receiver = receiver, msg = msg, member_type = member_type})
 		end
@@ -1800,7 +1800,7 @@ local function DevPointTeam(msg, matches)
 				resolve_username(username,  callbackres, cbres_extra)
 			else
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup ID")
-                return "ايـديـ🆔 المجمــوعــه👥"..string.gsub(msg.to.print_name, "_", " ")..": "..msg.to.id
+                return "ايـديـ🆔 الــمــجــمــوعــة👥"..string.gsub(msg.to.print_name, "_", " ")..": "..msg.to.id
 			end
 		end
 
@@ -1819,7 +1819,7 @@ local function DevPointTeam(msg, matches)
 					data[tostring(msg.to.id)]['settings']['set_link'] = nil
 					save_data(_config.moderation.data, data)
 				else
-                    send_large_msg(receiver, "تـمـ☑️ حـفـظـ رابـطـ الـمـجـمـوعـه👥")
+                    send_large_msg(receiver, "تـمـ☑️ حـفـظـ رابـطـ الــمــجــمــوعــة👥")
 					data[tostring(msg.to.id)]['settings']['set_link'] = result
 					save_data(_config.moderation.data, data)
 				end
@@ -1831,14 +1831,14 @@ local function DevPointTeam(msg, matches)
 		if matches[1] == 'set lk' and is_owner(msg) then
 			data[tostring(msg.to.id)]['settings']['set_link'] = 'waiting'
 			save_data(_config.moderation.data, data)
-            return 'ارسـل رابـطـ الـمـجـمـوعـه👥'
+            return 'ارسـل رابـطـ الــمــجــمــوعــة👥'
 		end
 
 		if msg.text then
 			if msg.text:match("^(https://telegram.me/joinchat/%S+)$") and data[tostring(msg.to.id)]['settings']['set_link'] == 'waiting' and is_owner(msg) then
 				data[tostring(msg.to.id)]['settings']['set_link'] = msg.text
 				save_data(_config.moderation.data, data)
-                return "تـمـ☑️ حـفـظـ رابـطـ الـمـجـمـوعـه👥"
+                return "تـمـ☑️ حـفـظـ رابـطـ الــمــجــمــوعــة👥"
 			end
 		end
 
@@ -1851,7 +1851,7 @@ local function DevPointTeam(msg, matches)
                 return "يرجى ارسال [/set lk] لانشاء  رابط المجموعه"
 			end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
-            return "رابـطـ الـمـجـمـوعـه👥 \n"..group_link
+            return "رابـطـ الــمــجــمــوعــة👥 \n"..group_link
 		end
 
 		if matches[1] == "invite" and is_sudo(msg) then
@@ -2079,16 +2079,16 @@ local function DevPointTeam(msg, matches)
 			save_data(_config.moderation.data, data)
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] set SuperGroup description to: "..about_text)
 			channel_set_about(receiver, about_text, ok_cb, false)
-            return "تـمـ☑️ تـعـيـنـ📝ـوصـف المجمــوعــه👥\n\n"
+            return "تـمـ☑️ تـعـيـنـ📝ـوصـف الــمــجــمــوعــة👥\n\n"
 		end
 
 		if matches[1] == "set us" and is_admin1(msg) then
 			local function ok_username_cb (extra, success, result)
 				local receiver = extra.receiver
 				if success == 1 then
-                    send_large_msg(receiver, "تـمـ☑️ وضـع مـعـرف للمجمــوعــه👥\n\n")
+                    send_large_msg(receiver, "تـمـ☑️ وضـع مـعـرف الــمــجــمــوعــة👥\n\n")
                 elseif success == 0 then
-                    send_large_msg(receiver, "فـشـلـ⚠️ تـعـيـنـ❗️مـعـرف المجمــوعــه👥")
+                    send_large_msg(receiver, "فـشـلـ⚠️ تـعـيـنـ❗️مـعـرف الــمــجــمــوعــة👥")
                 end
 			end
 			local username = string.gsub(matches[2], '@', '')
@@ -2142,7 +2142,7 @@ local function DevPointTeam(msg, matches)
 				data[tostring(msg.to.id)][data_cat] = nil
 				save_data(_config.moderation.data, data)
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] cleaned rules")
-                return 'تـــمـ☑️ مـسـح الـقـوانــ📝ــيـن للـمـمـجـموعـــه 👥'
+                return 'تـــمـ☑️ مـسـح الـقـوانــ📝ــيـن للــمــجــمــوعــة 👥'
 			end
 			if matches[2] == 'ab' then
 				local receiver = get_receiver(msg)
@@ -2155,7 +2155,7 @@ local function DevPointTeam(msg, matches)
 				save_data(_config.moderation.data, data)
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] cleaned about")
 				channel_set_about(receiver, about_text, ok_cb, false)
-                return 'تـــمـ☑️ مـسـح وصــ📝ــف الـمـمـجـموعـــه 👥'
+                return 'تـــمـ☑️ مـسـح وصــ📝ــف الــمــجــمــوعــة 👥'
 			end
 			if matches[2] == 'sils' then
 				chat_id = msg.to.id
@@ -2167,9 +2167,9 @@ local function DevPointTeam(msg, matches)
 				local function ok_username_cb (extra, success, result)
 					local receiver = extra.receiver
 					if success == 1 then
-                        send_large_msg(receiver, "تـــمـ☑️ مـسـح معــ❗️ــرف الـمـمـجـموعـــه 👥")
+                        send_large_msg(receiver, "تـــمـ☑️ مـسـح معــ❗️ــرف الــمــجــمــوعــة 👥")
                     elseif success == 0 then
-                        send_large_msg(receiver, "عــ⚠️ــذرا فــشــلــ❗️مــســح مـعــرف المجموعه👥")
+                        send_large_msg(receiver, "عــ⚠️ــذرا فــشــلــ❗️مــســح مـعــرف الــمــجــمــوعــة👥")
                     end
 				end
 				local username = ""
@@ -2667,11 +2667,11 @@ local function DevPointTeam(msg, matches)
 				if is_muted_user(chat_id, user_id) then
 					unmute_user(chat_id, user_id)
 					savelog(msg.to.id, name_log.." ["..msg.from.id.."] removed ["..user_id.."] from the muted users list")
-                    return "["..user_id.."] \nتـمـ⚠️ـالـغـاء كـتـمـكـ🔕ـفـي الـمـجـمـوعـه👥"
+                    return "["..user_id.."] \nتـمـ⚠️ـالـغـاء كـتـمـكـ🔕ـفـي الــمــجــمــوعــة👥"
 				elseif is_momod(msg) then
 					mute_user(chat_id, user_id)
 					savelog(msg.to.id, name_log.." ["..msg.from.id.."] added ["..user_id.."] to the muted users list")
-                    return "["..user_id.."] \nتـمـ☑️ـكـتـمـكـ🔕ـفـي الـمـجـمـوعـه👥"
+                    return "["..user_id.."] \nتـمـ☑️ـكـتـمـكـ🔕ـفـي الــمــجــمــوعــة👥"
 				end
 			elseif matches[1] == "sil" or matches[1] == "sil" and not string.match(matches[2], '^%d+$') then
 				local receiver = get_receiver(msg)
