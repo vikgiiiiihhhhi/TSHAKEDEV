@@ -1983,10 +1983,10 @@ local function DevPointTeam(msg, matches)
 		end
 
 		if matches[1] == 'add mod' then
-		  if not is_owner(msg) then
+		  if not is_momod(msg) then
 				return
 			end
-			if not is_owner(msg) then
+			if not is_momod(msg) then
                 return "للمــديــر🗣فـــــقـــــط⚠️"
 			end
 			if type(msg.reply_id) ~= "nil" then
