@@ -1913,7 +1913,7 @@ local function DevPointTeam(msg, matches)
 		end]]
 
 			if matches[1] == 'add admin' then
-				if not is_support(msg.from.id) and not is_momod(msg) then
+				if not is_support(msg.from.id) and not is_owner(msg) then
 					return
 				end
 			if type(msg.reply_id) ~= "nil" then
@@ -1949,7 +1949,7 @@ local function DevPointTeam(msg, matches)
 		end
 
 		if matches[1] == 'del admin' then
-			if not is_support(msg.from.id) and not is_momod(msg) then
+			if not is_support(msg.from.id) and not is_owner(msg) then
 				return
 			end
 			if type(msg.reply_id) ~= "nil" then
@@ -2015,7 +2015,7 @@ local function DevPointTeam(msg, matches)
 		  if not is_momod(msg) then
 				return
 			end
-			if not is_momod(msg) then
+			if not is_owner(msg) then
                 return "للمــديــر🗣فـــــقـــــط⚠️"
 			end
 			if type(msg.reply_id) ~= "nil" then
@@ -2059,7 +2059,7 @@ local function DevPointTeam(msg, matches)
 			if not is_momod(msg) then
 				return
 			end
-			if not is_momod(msg) then
+			if not is_owner(msg) then
                 return "للمــديــر🗣فـــــقـــــط⚠️"
 			end
 			if type(msg.reply_id) ~= "nil" then
