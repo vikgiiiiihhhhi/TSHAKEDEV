@@ -2015,9 +2015,6 @@ local function DevPointTeam(msg, matches)
 		  if not is_momod(msg) then
 				return
 			end
-			if not is_owner(msg) then
-                return "للمــديــر🗣فـــــقـــــط⚠️"
-			end
 			if type(msg.reply_id) ~= "nil" then
 				local cbreply_extra = {
 					get_cmd = 'add mod',
@@ -2058,9 +2055,6 @@ local function DevPointTeam(msg, matches)
 		if matches[1] == 'del mod' then
 			if not is_momod(msg) then
 				return
-			end
-			if not is_owner(msg) then
-                return "للمــديــر🗣فـــــقـــــط⚠️"
 			end
 			if type(msg.reply_id) ~= "nil" then
 				local cbreply_extra = {
