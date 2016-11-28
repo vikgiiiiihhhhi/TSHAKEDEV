@@ -2167,7 +2167,7 @@ local function DevPointTeam(msg, matches)
 				local data_cat = 'rules'
 				if data[tostring(msg.to.id)][data_cat] == nil then
                     return "عـذرا لـ⚠️ـا يـوجـد قـوانــ📝ــيـن لـيـتــم مـسـ❌ـحـهـا"
-				end
+				end 
 				data[tostring(msg.to.id)][data_cat] = nil
 				save_data(_config.moderation.data, data)
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] cleaned rules")
