@@ -2015,6 +2015,9 @@ local function DevPointTeam(msg, matches)
 		  if not is_momod(msg) then
 				return
 			end
+            if not is_owner(msg) then 
+                return "لـــلـــمــ🗣ــديـــر فـــقـــط⚠️" 
+            end 
 			if type(msg.reply_id) ~= "nil" then
 				local cbreply_extra = {
 					get_cmd = 'add mod',
@@ -2056,6 +2059,9 @@ local function DevPointTeam(msg, matches)
 			if not is_momod(msg) then
 				return
 			end
+            if not is_owner(msg) then 
+                return "لـــلـــمــ🗣ــديـــر فـــقـــط⚠️" 
+            end 
 			if type(msg.reply_id) ~= "nil" then
 				local cbreply_extra = {
 					get_cmd = 'del mod',
@@ -2143,9 +2149,9 @@ local function DevPointTeam(msg, matches)
 			if not is_momod(msg) then
 				return
 			end
-			if not is_momod(msg) then
-                return "للمــديــر🗣فـــــقـــــط⚠️"
-			end
+            if not is_owner(msg) then 
+                return "لـــلـــمــ🗣ــديـــر فـــقـــط⚠️" 
+            end 
 			if matches[2] == 'mods' then
 				if next(data[tostring(msg.to.id)]['moderators']) == nil then
                     return 'عـذرا لـ⚠️ـا يـوجـد ادمـنـ🗣ـيـه لـيـتــم مـسـ❌ـحـهـم'
