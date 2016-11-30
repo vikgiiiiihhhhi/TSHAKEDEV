@@ -1354,7 +1354,7 @@ function get_message_callback(extra, success, result)
 		print(chat_id)
 		if is_muted_user(chat_id, user_id) then
 			unmute_user(chat_id, user_id)
-send_large_msg(receiver, " ["..user_id.."] \nتـمـ⚠️ الـغـاء كـتـمـك 🔕 فـي الــمــجــمــوعــة👥 ")
+send_large_msg(receiver, " ["..user_id.."] \nتـمـ⚠️ ا��ـغـاء كـتـمـك 🔕 فـي الــمــجــمــوعــة👥 ")
         elseif is_momod(msg) then
             mute_user(chat_id, user_id)
             send_large_msg(receiver, " ["..user_id.."] \nتـمـ☑️ كـتـمـك 🔕 فـي الــمــجــمــوعــة👥")
@@ -2167,7 +2167,7 @@ local function DevPointTeam(msg, matches)
 				local data_cat = 'rules'
 				if data[tostring(msg.to.id)][data_cat] == nil then
                     return "عـذرا لـ⚠️ـا يـوجـد قـوانــ📝ــيـن لـيـتــم مـسـ❌ـحـهـا"
-				end 
+				end
 				data[tostring(msg.to.id)][data_cat] = nil
 				save_data(_config.moderation.data, data)
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] cleaned rules")
@@ -2625,7 +2625,7 @@ local function DevPointTeam(msg, matches)
 					unmute(chat_id, msg_type)
     return 'تم ⚠️ فتح 🔓 الصوتيات 🎤 في مجموعتك 👥\nبواسطه 🔸--🔹 (@'..(msg.from.username or 'لا يوجد')..')\n'
                 else
-    return 'الصوتيات 🎤 بالتاكيد تم ⚠️ فتحها 🔓 لمجموعتك 👥\nبواسطه 🔸--🔹 (@'..(msg.from.username or 'لا يوجد')..')\n'
+    return 'الصوتيات 🎤 با��تاكيد تم �����️ فتحها 🔓 لمجموعتك 👥\nبواسطه 🔸--🔹 (@'..(msg.from.username or 'لا يوجد')..')\n'
                 end
             end
 			if matches[2] == 'ph' then
